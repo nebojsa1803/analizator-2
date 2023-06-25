@@ -1,0 +1,35 @@
+.formRow {
+  display: inline-flex;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+.radio {
+  display: inline-flex;
+  box-shadow: var(--shadow-2);
+}
+
+.radioInput {
+  display: none; /*circles will dsappear */
+}
+.radioLabel {
+  padding: 0.6rem 2rem;
+  color: #000;
+  background-color: #fff;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.radioLabel:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-3);
+}
+.radioLabel:not(:last-of-type) {
+  border-right: 1px solid var(--primary-500); /*border on right side accept last field */
+}
+/*when radio is chacked  take him and first sibling with class radioLabel*/
+.radioInput:checked + .radioLabel {
+  background-color: var(--primary-500);
+  color: #fff;
+}

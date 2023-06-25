@@ -1,0 +1,111 @@
+.nav {
+  background-color: var(--black);
+  box-shadow: var(--shadow-1);
+  color: #fff;
+  width: 100%;
+}
+
+/*for aligning content, logo, links, school button, parent for logo and links*/
+.navCenter {
+  min-height: 4rem;
+  padding-inline: 1rem;
+}
+
+/*for NavIcon, TestAnalizator text and FaBars */
+.navHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  font-size: 2rem;
+}
+.logo span {
+  color: var(--red-medium);
+}
+
+.bars {
+  font-size: 1.5rem;
+  background-color: transparent;
+  color: var(--primary-500);
+  border-color: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.bars:hover {
+  color: var(--primary-300);
+  transform: rotate(90deg);
+}
+.links a {
+  font-size: 1rem;
+  color: var(--primary-500);
+  letter-spacing: var(--letterSpacing);
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: var(--transition);
+}
+.links a:hover {
+  background-color: var(--primary-100);
+  color: var(--primary-300);
+  padding-left: 1.5rem;
+}
+/* no height for container, that will give useRef, and then will be adjust with dynamicly with inline css */
+.linksContainer {
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.externalLinksIcons {
+  display: none;
+}
+
+@media screen and (min-width: 800px) {
+  .bars {
+    display: none;
+  }
+  .navHeader {
+    padding: 0;
+  }
+  .navCenter {
+    max-width: 1170px;
+    height: 4rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  /* on big screen height is auto, will take height of all links, !important even links are hidden on small screen, they will be there on big screen  */
+  .linksContainer {
+    height: auto !important;
+  }
+  .links {
+    display: flex;
+    gap: 1rem;
+  }
+  .links a {
+    padding: 0;
+  }
+  .links a:hover {
+    padding: 0;
+    background-color: transparent;
+    font-weight: 600;
+  }
+  .externalLinksIcons {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.2rem;
+  }
+  .externalLinksIcons a {
+    color: var(--primary-500);
+    transition: var(--transition);
+  }
+  .externalLinksIcons a:hover {
+    color: var(--primary-300);
+    transition: var(--transition);
+  }
+}

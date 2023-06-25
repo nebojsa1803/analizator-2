@@ -1,0 +1,13 @@
+.wrapper {
+  height: calc(100vh - 6.5rem);
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(
+      to left,
+      rgba(21, 49, 49, 0.8),
+      rgba(21, 49, 49, 0.5)
+    ),
+    url('./../../assets/background.jpg') center/cover no-repeat fixed;
+}

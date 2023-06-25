@@ -1,0 +1,48 @@
+.main {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  margin-top: 3rem;
+}
+
+.paragraph {
+  letter-spacing: var(--letterSpacing);
+  line-height: 1.6;
+  font-size: 1.25rem;
+  text-align: justify;
+  color: #fff;
+}
+.homeBtn {
+  cursor: pointer;
+  color: white;
+  background-color: transparent;
+  border: 2px solid var(--black);
+  letter-spacing: 1px;
+  padding: 0.375rem 0.75rem;
+  box-shadow: var(--shadow-1);
+  transition: var(--transition);
+}
+.homeBtn:hover {
+  box-shadow: var(--shadow-3);
+  background-color: #30cfad22;
+}
+.buttonsWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+}
+
+@media screen and (min-height: 700px) {
+  .main {
+    margin-top: 10rem;
+    gap: 5rem;
+  }
+}
+@media screen and (min-width: 800px) {
+  .main {
+    justify-content: center;
+  }
+}

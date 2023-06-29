@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigation } from 'react-router-dom'
 import RadioButtonRow from './Elements/RadioButtonRow'
 import {
   addDataToLocalStorage,
@@ -9,10 +9,16 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addTaskLevels } from '../../features/levelsDataSlice'
+import Modal from './../../components/Modal/Modal'
+
+import { closeModal, openModal } from '../../features/modalSlice'
 
 const TaskLevelsForm = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  //modal is closed, but om abort button click must show up
+  const { isOpen } = useSelector((store) => store.modal)
 
   //gives number of tasks
   const { numberOfTasks } = useSelector(
@@ -44,13 +50,19 @@ const TaskLevelsForm = () => {
   const handleChange = (e) => {
     setLevelsForTasks({ ...levelsForTasks, [e.target.name]: e.target.value })
   }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(addTaskLevels(levelsForTasks))
-    navigate(`./../poeni-i-ocena/ucenik-broj/1`)
+    if (Object.values(levelsForTasks).every((taskLevel) => taskLevel !== '')) {
+      dispatch(addTaskLevels(levelsForTasks))
+      navigate(`./../poeni-i-ocena/ucenik-broj/1`)
+    } else {
+      alert('Да бисте наставили даље, морате одабрати ниво за сваки задатак.⚠️')
+    }
   }
   return (
     <form className='form'>
+      {isOpen && <Modal />}
       <h4>Одаберите ниво за сваки задатак</h4>
       <Link className='btn btn-back' to='/opsti-podaci'>
         ⬅ Општи подаци
@@ -65,12 +77,22 @@ const TaskLevelsForm = () => {
       ))}
 
       <div className='group-button'>
-        <a type='submit' className='btn btn-success' onClick={handleSubmit}>
+        <button
+          type='submit'
+          className='btn btn-success'
+          onClick={handleSubmit}
+        >
           Потврди
-        </a>
-        <Link to='/' className='btn btn-cancel'>
+        </button>
+        <button
+          type='button'
+          className='btn btn-cancel'
+          onClick={() => {
+            dispatch(openModal())
+          }}
+        >
           Прекини
-        </Link>
+        </button>
       </div>
     </form>
   )

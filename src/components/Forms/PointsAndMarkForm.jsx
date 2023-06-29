@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useNavigation, useParams } from 'react-router-dom'
+import Modal from '../Modal/Modal'
 
 import Input from './Elements/Input'
 import {
@@ -9,9 +10,14 @@ import {
   getDataFromLocalStorage,
 } from '../../functions/functions'
 
+import { closeModal, openModal } from '../../features/modalSlice'
+
 const PointsAndMarkForm = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  //modal is closed, but om abort button click must show up
+  const { isOpen } = useSelector((store) => store.modal)
 
   const { studentId } = useParams()
 
@@ -83,9 +89,28 @@ const PointsAndMarkForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
-    //if resaultIndex >= 0, that student is allready in storage, just replace old with new resault
+    if (Object.values(currentStudentResault).includes('')) {
+      alert('Да бисте наставили даље, морате попунити сва поља.⚠️')
+      return
+    }
+    if (
+      Object.values(currentStudentResault)
+        .slice(2)
+        .some((point) => point * 1 < 0 || point * 1 > 1)
+    ) {
+      alert('Број поена мора бити између 0 и 1.⚠️')
+      return
+    }
+    if (
+      !Number.isInteger(currentStudentResault.mark * 1) ||
+      currentStudentResault.mark * 1 <= 0 ||
+      currentStudentResault.mark * 1 > 5
+    ) {
+      alert('Оцена мора бити природан број између 1 и 5.⚠️')
+      return
+    }
     if (resaultIndex >= 0) {
+      //if resaultIndex >= 0, that student is allready in storage, just replace old with new resault
       //old class resault
       const replacingResault = [...classResaultFromStorage]
       //update old class resault with corection of one student resault
@@ -122,6 +147,8 @@ const PointsAndMarkForm = () => {
 
   return (
     <form className='form'>
+      {isOpen && <Modal />}
+
       <h3>
         Унесите бодове {typeOfMark && 'и оцену'} за ученика број {studentId} од{' '}
         {numberOfStudentsWhoWorked}
@@ -156,12 +183,22 @@ const PointsAndMarkForm = () => {
         />
       )}
       <div className='group-button'>
-        <a type='submit' className='btn btn-success' onClick={handleSubmit}>
+        <button
+          type='submit'
+          className='btn btn-success'
+          onClick={handleSubmit}
+        >
           Потврди
-        </a>
-        <Link to='/' className='btn btn-cancel'>
+        </button>
+        <button
+          type='button'
+          className='btn btn-cancel'
+          onClick={() => {
+            dispatch(openModal())
+          }}
+        >
           Прекини
-        </Link>
+        </button>
       </div>
     </form>
   )

@@ -2,11 +2,15 @@ import { useSelector } from 'react-redux'
 import Part1_GeneralData from './Part1_GeneralData'
 import { getDataFromLocalStorage } from '../../functions/functions'
 import styles from './Resault.module.css'
+import Part2_Marks from './Part2_Marks'
+import Part3_Levels from './Part3_Levels'
+import Part3_SingleTaskData from './Part3_SingleTaskData'
 
 const Resault = () => {
   const classResault = getDataFromLocalStorage('classResault')
   const { taskLevels } = useSelector((store) => store.levels)
   const generalData = useSelector((store) => store.generalData)
+
   // console.log('class resault array', classResault)
   // console.log('levels', taskLevels)
   // console.log('general data', generalData.generalData)
@@ -17,6 +21,9 @@ const Resault = () => {
         <div className='title-underline'></div>
       </div>
       <Part1_GeneralData />
+      <Part2_Marks />
+      <Part3_Levels />
+      <Part3_SingleTaskData />
     </main>
   )
 }

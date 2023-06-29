@@ -1,17 +1,22 @@
 import React from 'react'
-import { useRouteError } from 'react-router-dom'
+import { Link, useRouteError } from 'react-router-dom'
+import notFoundImg from './../../assets/page-not-found-1.svg'
+import styles from './Error.module.css'
 
 const Error = () => {
   const error = useRouteError()
-  // console.log(error.data.split(' ').at(-1))
+
   return (
-    <div>
-      <h2>Грешка 404</h2>
-      <h3>Страница није пронађена</h3>
-      <p>
-        Не постоји страница чији се URL поклапа са:
-        {error.data.split(' ').at(-1)}
-      </p>
+    <div className={styles.container}>
+      <img src={notFoundImg} alt='page-not-found' className={styles.errorImg} />
+      <div className={styles.outOfPhoto}>
+        <h3>Грешка {error.status}</h3>
+        <h4>Страница није пронађена</h4>
+        <p className={styles.paragraph}>{error.data}</p>
+        <Link to='/' className='btn'>
+          Врати се 🏠
+        </Link>
+      </div>
     </div>
   )
 }

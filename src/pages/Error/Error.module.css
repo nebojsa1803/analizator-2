@@ -1,0 +1,21 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: var(--backgroundColor);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.outOfPhoto {
+  text-align: center;
+}
+.errorImg {
+  width: 300px;
+  margin: 2rem;
+}
+.paragraph {
+  color: var(--red-dark);
+  background: var(--red-light);
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+}

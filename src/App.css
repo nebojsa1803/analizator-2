@@ -172,12 +172,32 @@ ul {
   background-color: var(--primary-600);
   color: var(--white);
 }
+.btn-success-modal {
+  background-color: var(--white);
+  color: var(--primary-600);
+  border: 1px solid var(--primary-600);
+}
+.btn-success-modal:hover {
+  background-color: var(--primary-600);
+  color: var(--white);
+  border: transparent;
+}
 .btn-cancel {
   background-color: #df4759;
   color: var(--white);
 }
 .btn-cancel:hover {
   background-color: #c94050;
+}
+.btn-cancel-modal {
+  background-color: var(--white);
+  color: #df4759;
+  border: 1px solid #df4759;
+}
+.btn-cancel-modal:hover {
+  background-color: #df4759;
+  color: var(--white);
+  border: transparent;
 }
 .btn-back {
   background-color: var(--grey-300);
@@ -290,4 +310,9 @@ input:disabled,
 .group-button > .btn {
   flex-grow: 1;
   text-align: center;
+}
+@media screen and (max-width: 330px) {
+  .group-btn {
+    display: flex;
+  }
 }

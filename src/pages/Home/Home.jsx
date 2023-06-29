@@ -1,9 +1,19 @@
 import { Link } from 'react-router-dom'
 import styles from './Home.module.css'
 import { clearLocalStorage } from '../../functions/functions'
+import { useDispatch } from 'react-redux'
+import { closeModal } from '../../features/modalSlice'
+import { useEffect } from 'react'
 const Home = () => {
   //begining - clear storage
   clearLocalStorage()
+
+  //if modal is open, close
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(closeModal())
+  }, [])
+
   return (
     <main className={styles.main}>
       <p className={styles.paragraph}>

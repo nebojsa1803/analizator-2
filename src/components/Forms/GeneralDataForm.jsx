@@ -3,13 +3,19 @@ import Input from './Elements/Input'
 import Select from './Elements/Select'
 import { addGeneralData } from '../../features/generalDataSlice'
 import { useDispatch } from 'react-redux'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import {
   addDataToLocalStorage,
   getDataFromLocalStorage,
 } from '../../functions/functions'
+import { useSelector } from 'react-redux'
+import Modal from './../../components/Modal/Modal'
+
+import { openModal } from '../../features/modalSlice'
 
 const GeneralDataForm = () => {
+  //modal is closed, but om abort button click must show up
+  const { isOpen } = useSelector((store) => store.modal)
   //check is somthing allready in storage, if it is that's state on start, else empty values object
   const dataFromStorage = getDataFromLocalStorage('generalData')
   //check state of number of students and number of tasks input
@@ -49,13 +55,28 @@ const GeneralDataForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addDataToLocalStorage('forbiddenChange', true)
-    dispatch(addGeneralData(generalData))
-    navigate('./../nivoi-za-zadatke')
+    if (
+      generalData.subject &&
+      generalData.date &&
+      generalData.typeOfTest &&
+      generalData.typeOfMark &&
+      generalData.schoolClass &&
+      generalData.classDivision &&
+      generalData.totalNumberOfStudents &&
+      generalData.numberOfStudentsWhoWorked &&
+      generalData.numberOfTasks
+    ) {
+      addDataToLocalStorage('forbiddenChange', true)
+      dispatch(addGeneralData(generalData))
+      navigate('./../nivoi-za-zadatke')
+    } else {
+      alert('Да бисте наставили даље, морате попунити сва поља.⚠️')
+    }
   }
 
   return (
     <form className='form'>
+      {isOpen && <Modal />}
       <h4>Општи подаци</h4>
 
       <Input
@@ -103,14 +124,14 @@ const GeneralDataForm = () => {
       <Input
         label='Укупан број ученика'
         purpose='totalNumberOfStudents'
-        inputType='text'
+        inputType='number'
         value={generalData.totalNumberOfStudents}
         onChange={handleChange}
       />
       <Input
         label='Број ученика који су радили'
         purpose='numberOfStudentsWhoWorked'
-        inputType='text'
+        inputType='number'
         value={generalData.numberOfStudentsWhoWorked}
         disableInputs={disableInputs}
         onChange={handleChange}
@@ -118,18 +139,28 @@ const GeneralDataForm = () => {
       <Input
         label='Број задатака'
         purpose='numberOfTasks'
-        inputType='text'
+        inputType='number'
         value={generalData.numberOfTasks}
         disableInputs={disableInputs}
         onChange={handleChange}
       />
       <div className='group-button'>
-        <a type='submit' className='btn btn-success' onClick={handleSubmit}>
+        <button
+          type='submit'
+          className='btn btn-success'
+          onClick={handleSubmit}
+        >
           Потврди
-        </a>
-        <Link to='/' className='btn btn-cancel'>
+        </button>
+        <button
+          className='btn btn-cancel'
+          type='button'
+          onClick={() => {
+            dispatch(openModal())
+          }}
+        >
           Прекини
-        </Link>
+        </button>
       </div>
     </form>
   )

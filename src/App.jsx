@@ -11,6 +11,9 @@ import TasksPointsAndMark from './pages/TasksPointsAndMark/TasksPointsAndMark'
 import Resault from './pages/Resault/Resault'
 import Error from './pages/Error/Error'
 import { clearLocalStorage } from './functions/functions'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { closeModal } from './features/modalSlice'
 
 const router = createBrowserRouter([
   {

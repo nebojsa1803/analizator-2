@@ -6,6 +6,7 @@ import {
   percentageForSingleTask,
 } from '../../functions/functions'
 import { useSelector } from 'react-redux'
+import TableComponentColumnLabel from '../../components/Forms/Elements/TableComponentColumnLabel'
 
 const Part3_SingleTaskData = () => {
   const classResault = getDataFromLocalStorage('classResault')
@@ -41,17 +42,30 @@ const Part3_SingleTaskData = () => {
           labels: Object.keys(percentageForEverySingleTask),
           datasets: [
             {
-              label: 'проценат освојених поена за сваки задатак',
+              label: 'проценат тачно решених задатака',
               data: Object.values(percentageForEverySingleTask).map((task) => {
                 return task * 1
               }),
-              backgroundColor: '#36a3cc',
+              backgroundColor: '#36a3cc99',
               borderColor: 'black',
               borderWidth: 1,
             },
           ],
         }}
       />
+      <div>
+        <TableComponentColumnLabel
+          headerBackground='#f1f5f9'
+          headerColSpan={numberOfTasks * 1}
+          header='Проценат тачно решених задатака'
+          marksArray={Object.keys(percentageForEverySingleTask)}
+          numberOfMarksArray={Object.values(percentageForEverySingleTask).map(
+            (task) => {
+              return `${task * 1}%`
+            }
+          )}
+        />
+      </div>
     </div>
   )
 }

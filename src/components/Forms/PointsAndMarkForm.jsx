@@ -21,9 +21,9 @@ const PointsAndMarkForm = () => {
 
   const { studentId } = useParams()
 
-  useEffect(() => {
-    console.log(`new id: ${studentId}`)
-  }, [studentId])
+  // useEffect(() => {
+  //   console.log(`new id: ${studentId}`)
+  // }, [studentId])
 
   //const [studentIdParam, setStudentIdParam] = useState(studentId)
 
@@ -35,13 +35,25 @@ const PointsAndMarkForm = () => {
   const taskArray = createTaskArray(numberOfTasks)
 
   //task object for current student state
-  const currentStudentResaultObject = taskArray.reduce(
-    (acc, curr) => {
-      acc[curr] = ''
-      return acc
-    },
-    { mark: '', studentNumber: studentId * 1 }
-  )
+  let currentStudentResaultObject
+  if (typeOfMark === 'true') {
+    currentStudentResaultObject = taskArray.reduce(
+      (acc, curr) => {
+        acc[curr] = ''
+        return acc
+      },
+      { mark: '', studentNumber: studentId * 1 }
+    )
+  } else {
+    currentStudentResaultObject = taskArray.reduce(
+      (acc, curr) => {
+        acc[curr] = ''
+        return acc
+      },
+      { studentNumber: studentId * 1 }
+    )
+  }
+
   //take current student resault from local storage
   const currentStudentResaultFromStorage = getDataFromLocalStorage(
     'currentStudentResault'
@@ -102,9 +114,10 @@ const PointsAndMarkForm = () => {
       return
     }
     if (
-      !Number.isInteger(currentStudentResault.mark * 1) ||
-      currentStudentResault.mark * 1 <= 0 ||
-      currentStudentResault.mark * 1 > 5
+      typeOfMark === 'true' &&
+      (!Number.isInteger(currentStudentResault.mark * 1) ||
+        currentStudentResault.mark * 1 <= 0 ||
+        currentStudentResault.mark * 1 > 5)
     ) {
       alert('Оцена мора бити природан број између 1 и 5.⚠️')
       return

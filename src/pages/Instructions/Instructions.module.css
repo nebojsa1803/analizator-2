@@ -1,0 +1,46 @@
+.instructionsWrapper {
+  width: 90vw;
+  max-width: var(--fixed-width);
+  background: rgba(248, 250, 252, 0.9);
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-2);
+  padding: 2rem 2.5rem;
+  margin: 3rem auto;
+  height: fit-content;
+}
+.rules {
+  margin-top: 1rem;
+}
+
+.rules h5 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.rules ol li {
+  margin-bottom: 0.8rem;
+}
+
+@media screen and (max-width: 470px) {
+  .instructionsWrapper {
+    margin: 2rem auto;
+  }
+  .IHeading {
+    font-size: 1.7rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .instructionsWrapper {
+    margin: 1rem auto;
+  }
+  .rules h5 {
+    font-size: 0.8rem;
+  }
+  .rules ol li {
+    margin-bottom: 0.6rem;
+  }
+  .IHeading {
+    font-size: 1.5rem;
+  }
+}

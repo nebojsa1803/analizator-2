@@ -13,7 +13,8 @@ const Resault = () => {
 
   // console.log('class resault array', classResault)
   // console.log('levels', taskLevels)
-  // console.log('general data', generalData.generalData)
+  //console.log('general data', generalData.generalData)
+
   return (
     <main className={styles.resaultWrapper}>
       <div className='title'>
@@ -21,7 +22,7 @@ const Resault = () => {
         <div className='title-underline'></div>
       </div>
       <Part1_GeneralData />
-      <Part2_Marks />
+      {generalData.generalData.typeOfMark === 'true' && <Part2_Marks />}
       <Part3_Levels />
       <Part3_SingleTaskData />
     </main>

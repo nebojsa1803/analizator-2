@@ -1,3 +1,8 @@
 .marksChart {
   width: 500px;
 }
+.marksWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

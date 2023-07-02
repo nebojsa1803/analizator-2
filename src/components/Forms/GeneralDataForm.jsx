@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Input from './Elements/Input'
 import Select from './Elements/Select'
 import { addGeneralData } from '../../features/generalDataSlice'

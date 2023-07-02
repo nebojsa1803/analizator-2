@@ -1,3 +1,8 @@
 .levelsChart {
   width: 500px;
 }
+.levelsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

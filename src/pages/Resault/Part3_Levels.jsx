@@ -6,12 +6,19 @@ import {
   percentageOfCorrectAnswersForEveryTask,
 } from '../../functions/functions'
 import { useSelector } from 'react-redux'
+import TableComponentColumnLabel from '../../components/Forms/Elements/TableComponentColumnLabel'
 
 const Part3_Levels = () => {
   const classResault = getDataFromLocalStorage('classResault')
   const { taskLevels } = useSelector((store) => store.levels)
   const { basicPercentage, mediumPercentage, advancedPercentage } =
     percentageOfCorrectAnswersForEveryTask(classResault, taskLevels)
+
+  const levelsPercentageArray = [
+    basicPercentage === 'NaN' ? 'не постоји' : `${basicPercentage}%`,
+    mediumPercentage === 'NaN' ? 'не постоји' : `${mediumPercentage}%`,
+    advancedPercentage === 'NaN' ? 'не постоји' : `${advancedPercentage}%`,
+  ]
 
   const optionsPercent = {
     responsive: true,
@@ -33,7 +40,7 @@ const Part3_Levels = () => {
     },
   }
   return (
-    <div>
+    <div className={styles.levelsWrapper}>
       <div className={styles.levelsChart}>
         <Bar
           options={optionsPercent}
@@ -53,6 +60,16 @@ const Part3_Levels = () => {
               },
             ],
           }}
+        />
+      </div>
+      <div>
+        <TableComponentColumnLabel
+          headerBackground='#f1f5f9'
+          headerColSpan={3}
+          header='Оствареност по нивоима'
+          marksArray={['основни', 'средњи', 'напредни']}
+          numberOfMarksArray={levelsPercentageArray}
+          width='28rem'
         />
       </div>
     </div>

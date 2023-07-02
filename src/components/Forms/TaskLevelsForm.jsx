@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { addTaskLevels } from '../../features/levelsDataSlice'
 import Modal from './../../components/Modal/Modal'
 
-import { closeModal, openModal } from '../../features/modalSlice'
+import { openModal } from '../../features/modalSlice'
 
 const TaskLevelsForm = () => {
   const dispatch = useDispatch()

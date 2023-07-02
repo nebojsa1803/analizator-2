@@ -1,4 +1,9 @@
+@page {
+  margin: 20mm;
+  border: 1px solid red;
+}
 .resaultWrapper {
+  size: A4 portrait;
   background-color: #fff;
   width: 100%;
   min-height: 100vh;

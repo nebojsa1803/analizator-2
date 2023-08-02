@@ -8,6 +8,7 @@
   margin: 3rem auto;
   height: fit-content;
 }
+
 .rules {
   margin-top: 1rem;
 }
@@ -25,6 +26,7 @@
   .instructionsWrapper {
     margin: 2rem auto;
   }
+
   .IHeading {
     font-size: 1.7rem;
   }

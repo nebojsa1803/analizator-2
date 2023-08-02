@@ -21,7 +21,7 @@ export const links = [
 export const externalLinks = [
   {
     id: 1,
-    url: 'https://www.facebook.com',
+    url: 'https://www.facebook.com/SkolaPrilike',
     icon: <FaFacebook />,
   },
   {

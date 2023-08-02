@@ -2,7 +2,7 @@ import styles from './Instructions.module.css'
 const Instructions = () => {
   return (
     <div className={styles.instructionsWrapper}>
-      <div className='about-product'>
+      <div className={styles.aboutProduct}>
         <div className='title'>
           <h3 className={styles.IHeading}>Упутство</h3>
           <div className='title-underline'></div>

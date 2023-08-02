@@ -1,5 +1,13 @@
 .singleTaskDataChart {
   display: flex;
-  flex-direction: column;
   gap: 1rem;
+  align-items: center;
+  width: 500px;
+}
+.singleTaskDataChartBig {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  width: 1000px;
+  height: 300px;
 }

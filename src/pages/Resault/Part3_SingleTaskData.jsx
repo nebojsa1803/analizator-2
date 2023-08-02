@@ -35,24 +35,34 @@ const Part3_SingleTaskData = () => {
     },
   }
   return (
-    <div className={styles.singleTaskDataChart}>
-      <Bar
-        options={optionsPercent}
-        data={{
-          labels: Object.keys(percentageForEverySingleTask),
-          datasets: [
-            {
-              label: 'проценат тачно решених задатака',
-              data: Object.values(percentageForEverySingleTask).map((task) => {
-                return task * 1
-              }),
-              backgroundColor: '#36a3cc99',
-              borderColor: 'black',
-              borderWidth: 1,
-            },
-          ],
-        }}
-      />
+    <div>
+      <div
+        className={
+          numberOfTasks < 6
+            ? styles.singleTaskDataChart
+            : styles.singleTaskDataChartBig
+        }
+      >
+        <Bar
+          options={optionsPercent}
+          data={{
+            labels: Object.keys(percentageForEverySingleTask),
+            datasets: [
+              {
+                label: 'проценат тачно решених задатака',
+                data: Object.values(percentageForEverySingleTask).map(
+                  (task) => {
+                    return task * 1
+                  }
+                ),
+                backgroundColor: '#36a3cc99',
+                borderColor: 'black',
+                borderWidth: 1,
+              },
+            ],
+          }}
+        />
+      </div>
       <div>
         <TableComponentColumnLabel
           headerBackground='#f1f5f9'

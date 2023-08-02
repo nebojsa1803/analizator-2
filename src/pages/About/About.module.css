@@ -6,6 +6,7 @@
   box-shadow: var(--shadow-2);
   padding: 2rem 2.5rem;
   margin: 1rem auto;
+  height: fit-content;
 }
 .rules {
   margin-top: 1rem;

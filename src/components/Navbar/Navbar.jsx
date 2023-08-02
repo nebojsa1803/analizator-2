@@ -41,8 +41,16 @@ const Navbar = () => {
             {links.map((link) => {
               const { id, text, url } = link
               return (
-                <li key={id}>
-                  <NavLink to={url}>{text}</NavLink>
+                //onClick added later, withdraw div after click
+                <li key={id} onClick={toggleLinks}>
+                  <NavLink
+                    to={url}
+                    style={({ isActive }) => {
+                      return { color: isActive && '#fff' }
+                    }}
+                  >
+                    {text}
+                  </NavLink>
                 </li>
               )
             })}

@@ -233,6 +233,7 @@ ul {
   box-shadow: var(--shadow-2);
   padding: 2rem 2.5rem;
   margin: 1rem auto;
+  height: fit-content;
 }
 .form-label {
   display: block;
@@ -255,6 +256,7 @@ ul {
 
 .form-textarea {
   height: 7rem;
+  font-family: 'Roboto', sans-serif;
 }
 input:disabled,
 .form-input:disabled {
@@ -265,9 +267,8 @@ input:disabled,
   color: var(--grey-400);
 }
 .form-alert {
-  color: var(--red-dark);
+  color: var(--red-medium);
   letter-spacing: var(--letterSpacing);
-  text-transform: capitalize;
 }
 /* alert */
 
@@ -299,6 +300,7 @@ input:disabled,
   height: 0.25rem;
   margin: 0 auto;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* ============= PROJECT CSS =============== */

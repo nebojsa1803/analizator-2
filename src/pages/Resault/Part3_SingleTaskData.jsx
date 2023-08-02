@@ -35,12 +35,16 @@ const Part3_SingleTaskData = () => {
     },
   }
   return (
-    <div>
+    <div
+      className={
+        numberOfTasks < 6
+          ? styles.lessThen6TasksWrapper
+          : styles.moreThen5TasksWrapper
+      }
+    >
       <div
         className={
-          numberOfTasks < 6
-            ? styles.singleTaskDataChart
-            : styles.singleTaskDataChartBig
+          numberOfTasks < 6 ? styles.lessThen6Chart : styles.moreThen5Chart
         }
       >
         <Bar
@@ -63,7 +67,7 @@ const Part3_SingleTaskData = () => {
           }}
         />
       </div>
-      <div>
+      <div style={{ maxWidth: '1000px' }}>
         <TableComponentColumnLabel
           headerBackground='#f1f5f9'
           headerColSpan={numberOfTasks * 1}

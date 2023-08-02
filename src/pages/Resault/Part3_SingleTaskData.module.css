@@ -1,6 +1,7 @@
-.singleTaskDataChart {
+/* .singleTaskDataChart {
   display: flex;
   gap: 1rem;
+  flex-direction: row;
   align-items: center;
   width: 500px;
 }
@@ -10,4 +11,23 @@
   flex-direction: column;
   width: 1000px;
   height: 300px;
+} */
+
+.lessThen6TasksWrapper {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  align-items: center;
+}
+.lessThen6Chart {
+  width: 500px;
+}
+
+.moreThen5TasksWrapper {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+.moreThen5Chart {
+  width: 800px;
 }

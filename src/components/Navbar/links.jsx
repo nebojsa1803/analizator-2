@@ -16,6 +16,11 @@ export const links = [
     url: '/kontakt',
     text: 'Контакт',
   },
+  {
+    id: 4,
+    url: '/opsti-podaci',
+    text: 'Почни анализу',
+  },
 ]
 
 export const externalLinks = [

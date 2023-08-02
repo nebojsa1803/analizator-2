@@ -27,7 +27,7 @@ const TableComponentColumnLabel = ({
             <TableCell
               colSpan={headerColSpan}
               align='center'
-              sx={{ fontWeight: 'bold', fontSize: '1.1rem' }}
+              sx={{ fontWeight: 'bold', fontSize: '1rem' }}
             >
               {header}
             </TableCell>
@@ -37,14 +37,22 @@ const TableComponentColumnLabel = ({
         <TableBody>
           <TableRow>
             {marksArray.map((mark) => (
-              <TableCell key={mark} align='center'>
-                {mark}
+              <TableCell
+                key={mark}
+                align='center'
+                sx={{ padding: 0, margin: 0 }}
+              >
+                {mark.replace('задатак', '')}
               </TableCell>
             ))}
           </TableRow>
           <TableRow>
             {numberOfMarksArray.map((mark) => (
-              <TableCell key={Math.random()} align='center'>
+              <TableCell
+                key={Math.random()}
+                align='center'
+                sx={{ padding: 0, margin: 0 }}
+              >
                 {mark}
               </TableCell>
             ))}

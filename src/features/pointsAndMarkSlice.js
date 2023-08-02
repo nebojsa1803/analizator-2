@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getDataFromLocalStorage } from '../functions/functions'
 
 const initialState = {
   classResault: [],

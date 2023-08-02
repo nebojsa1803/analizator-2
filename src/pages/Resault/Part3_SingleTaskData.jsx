@@ -11,7 +11,7 @@ import TableComponentColumnLabel from '../../components/Forms/Elements/TableComp
 const Part3_SingleTaskData = () => {
   const classResault = getDataFromLocalStorage('classResault')
   const percentageForEverySingleTask = percentageForSingleTask(classResault)
-  const { numberOfTasks, typeOfMark, numberOfStudentsWhoWorked } = useSelector(
+  const { numberOfTasks } = useSelector(
     (store) => store.generalData.generalData
   )
 

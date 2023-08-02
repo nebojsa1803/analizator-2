@@ -1,12 +1,7 @@
 import { useSelector } from 'react-redux'
-import LabelValueRow from '../../components/Forms/Elements/LabelValueRow'
-import styles from './Part1_GeneralData.module.css'
 import {
   averagePoints,
   getDataFromLocalStorage,
-  numberOfEveryMark,
-  percentageForSingleTask,
-  percentageOfCorrectAnswersForEveryTask,
 } from '../../functions/functions'
 import { averageMark } from '../../functions/functions'
 import TableComponent from '../../components/Forms/Elements/TableComponent'

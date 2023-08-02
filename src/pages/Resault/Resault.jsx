@@ -7,13 +7,7 @@ import Part3_Levels from './Part3_Levels'
 import Part3_SingleTaskData from './Part3_SingleTaskData'
 
 const Resault = () => {
-  const classResault = getDataFromLocalStorage('classResault')
-  const { taskLevels } = useSelector((store) => store.levels)
   const generalData = useSelector((store) => store.generalData)
-
-  // console.log('class resault array', classResault)
-  // console.log('levels', taskLevels)
-  //console.log('general data', generalData.generalData)
 
   return (
     <main className={styles.resaultWrapper}>

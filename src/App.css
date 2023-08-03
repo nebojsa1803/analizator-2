@@ -201,6 +201,7 @@ ul {
 }
 .btn-back {
   background-color: var(--grey-300);
+  margin-bottom: 0.3rem;
   color: var(--grey-700);
 }
 .btn-back:hover {
@@ -312,6 +313,11 @@ input:disabled,
 .group-button > .btn {
   flex-grow: 1;
   text-align: center;
+}
+@media screen and (max-width: 460px) {
+  .form {
+    width: fit-content;
+  }
 }
 @media screen and (max-width: 330px) {
   .group-btn {
